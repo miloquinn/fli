@@ -49,10 +49,7 @@ def _disambiguate_names(entries: list[tuple[str, str]]) -> list[tuple[str, str]]
     duplicates = {name for name, count in name_counts.items() if count > 1}
     if not duplicates:
         return entries
-    return [
-        (code, f"{name} ({code})" if name in duplicates else name)
-        for code, name in entries
-    ]
+    return [(code, f"{name} ({code})" if name in duplicates else name) for code, name in entries]
 
 
 def _sanitize_code(code: str, allow_digit_prefix: bool = False) -> str:
